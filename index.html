@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Menus</title>
+    <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="site-name">
+            <h1>School Restaurant Meal options</h1>
+        </div>
+        <div class="nav-links">
+            <a id="link1" href="#">Link 1</a>
+            <a id="link2" href="#">Link 2</a>
+        </div>
+    </div>
+
+
+    <div id="menu-container" class="menu-container">
+        <!-- Menu data will be dynamically inserted here -->
+    </div>
+
+    <script src="fetcher.js">
+    </script>
+     <script>
+        // Function to format the date as yyyy-mm-dd
+        function getCurrentDate() {
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+            const dd = String(today.getDate()).padStart(2, '0');
+            return `${yyyy}-${mm}-${dd}`;
+        }
+
+        // Get today's date
+        const currentDate = getCurrentDate();
+
+        // Update the links dynamically with today's date
+        document.getElementById('link1').href = `https://mealdoo.com/week/uniresta/lipasto/ravintolalipasto?date=${currentDate}`;
+        document.getElementById('link1').textContent = `Ravintola Lipasto`;
+        document.getElementById('link2').href = `https://mealdoo.com/week/uniresta/julinia/ravintolajulinia?date=${currentDate}`;
+        document.getElementById('link2').textContent = `Ravintola Julinia`;
+    </script>
+</body>
+</html>

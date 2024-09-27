@@ -16,6 +16,14 @@
             <a id="link1" href="#">Link 1</a>
             <a id="link2" href="#">Link 2</a>
         </div>
+        <div class="language-selector"></div>
+            <label for="language">Language: </label>
+            <select id="language" onchange="switchLanguage()">
+                <option value="en">English</option>
+                <option value="fi">Finnish</option>
+                <!-- Add more languages here if needed -->
+            </select>
+        </div>
     </div>
 
 
@@ -34,14 +42,16 @@
             const dd = String(today.getDate()).padStart(2, '0');
             return `${yyyy}-${mm}-${dd}`;
         }
-
+        function langfind (){
+    return document.getElementById('language').value;
+}
         // Get today's date
         const currentDate = getCurrentDate();
-
+        const lang = langfind();
         // Update the links dynamically with today's date
-        document.getElementById('link1').href = `https://mealdoo.com/week/uniresta/lipasto/ravintolalipasto?date=${currentDate}`;
+        document.getElementById('link1').href = `https://mealdoo.com/week/uniresta/lipasto/ravintolalipasto?date=${currentDate}&lang=${lang}`;
         document.getElementById('link1').textContent = `Ravintola Lipasto`;
-        document.getElementById('link2').href = `https://mealdoo.com/week/uniresta/julinia/ravintolajulinia?date=${currentDate}`;
+        document.getElementById('link2').href = `https://mealdoo.com/week/uniresta/julinia/ravintolajulinia?date=${currentDate}&lang=${lang}`;
         document.getElementById('link2').textContent = `Ravintola Julinia`;
     </script>
 </body>

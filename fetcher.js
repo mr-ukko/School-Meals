@@ -7,14 +7,16 @@ const jsonUrls = [
 
 // Get the current date in YYYYMMDD format to match with the JSON
 const today = new Date();
-const formattedDate = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+//const formattedDate = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+formattedDate = 20240927
 // Get the container to display the menus
 const menuContainer = document.getElementById('menu-container');
 
 // Fetch and display the menus for today
 function fetchAndDisplayMenus() {
     jsonUrls.forEach(url => {
-        fetch(url)
+        const lang = langfinder();
+        fetch(url.replace("?lang=fi","?lang="+lang))
             .then(response => response.json())
             .then(data => {
                 displayMenuForToday(data);
@@ -22,43 +24,8 @@ function fetchAndDisplayMenus() {
             .catch(error => console.error('Error fetching menu:', error));
     });
 }
-
-function displayMenuToday(data) {
-    const restaurantName = data.siteId; // Assuming this is the restaurant name (update based on actual field if needed)
-    const mealOptions = data.mealOptions;
-
-    // Create a container for this restaurant's menu
-    const restaurantMenuDiv = document.createElement('div');
-    restaurantMenuDiv.classList.add('restaurant-menu');
-
-    // Display the restaurant name
-    const nameTitle = document.createElement('h2');
-    nameTitle.classList.add('restaurant-name');
-    nameTitle.textContent = restaurantName; // Displaying the siteId as restaurant name, change this if you have a specific field for it
-    restaurantMenuDiv.appendChild(nameTitle);
-
-    // Loop through meal options and display their names
-    mealOptions.forEach(option => {
-        option.rows.forEach(row => {
-            const mealDiv = document.createElement('div');
-            mealDiv.classList.add('meal-option');
-
-            // Get names in both languages (assuming English and Finnish)
-            const mealNames = row.names.map(nameObj => nameObj.name).join(' / ');
-
-            // Create a title for the meal option
-            const mealTitle = document.createElement('p');
-            mealTitle.classList.add('meal-name');
-            mealTitle.textContent = mealNames; // Set meal option names
-            mealDiv.appendChild(mealTitle);
-
-            // Append the meal option to the restaurant menu div
-            restaurantMenuDiv.appendChild(mealDiv);
-        });
-    });
-
-    // Append this restaurant's menu to the main container
-    menuContainer.appendChild(restaurantMenuDiv);
+function langfinder (){
+    return document.getElementById('language').value;
 }
 
 // Function to display the menu for the current day
@@ -119,7 +86,14 @@ function displayMenuForToday(data) {
     // Append this kitchen's menu to the main container
     menuContainer.appendChild(kitchenMenuDiv);
 }
+function switchLanguage() {
+    const menuItems = document.querySelectorAll('.kitchen-menu');
+    // Loop through each menu item and remove it from the DOM
+    menuItems.forEach(item => {
+        item.remove();
+    });
+    fetchAndDisplayMenus();
+}
 
 // Fetch and display menus when the page loads
-window.onload = 
-    fetchAndDisplayMenus
+window.onload = fetchAndDisplayMenus

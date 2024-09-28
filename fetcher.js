@@ -7,8 +7,8 @@ const jsonUrls = [
 
 // Get the current date in YYYYMMDD format to match with the JSON
 const today = new Date();
-//const formattedDate = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
-formattedDate = 20240927
+const formattedDate = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+//formattedDate = 20240927
 // Get the container to display the menus
 const menuContainer = document.getElementById('menu-container');
 

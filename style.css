@@ -15,7 +15,7 @@ body {
     flex:1 1 30%;
     justify-self: stretch;
     max-width: 650px; /* Flex basis */
-    min-width: 375px; /* Minimum width for each kitchen menu */
+    min-width: 355px; /* Minimum width for each kitchen menu */
     border: 1px solid #ddd;
     border-radius: 5px; /* Rounded corners */
     padding: 10px;
@@ -55,8 +55,18 @@ body {
     color: white;
     text-decoration: none;
     padding: 10px 15px;
+    margin-top: 5px;
+}
+.navbar h1 {
+    color: white;
+    text-decoration: none;
+    font-size: 100%;
 }
 .navbar a:hover {
     background-color: #575757;
     border-radius: 5px;
+}
+.language-selector{
+    display: flex;
+    flex-wrap: wrap; 
 }

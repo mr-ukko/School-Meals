@@ -2,8 +2,11 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #f0f0f0; /* Light background for better contrast */
+    /*background-color: #f0f0f0;  Light background for better contrast */
+    background: linear-gradient(to bottom, #fbc2eb, #a6c1ee); /* From pink to light blue */
+    background-attachment: fixed;
 }
+
 .menu-container {
     display: flex;
     justify-content: center;
@@ -19,7 +22,7 @@ body {
     border: 1px solid #ddd;
     border-radius: 5px; /* Rounded corners */
     padding: 10px;
-    background-color: #f9f9f9;
+    background-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     margin: 5px; /* Spacing between menus */
 }
@@ -31,7 +34,7 @@ body {
 .meal-option {
     margin: 10px 0;
     border-bottom: 1px solid #ccc; /* Separator between meals */
-    padding-bottom: 10px; /* Space below the meal option */
+    padding-bottom: 5px; /* Space below the meal option */
 }
 .meal-name {
     font-size: 20px;

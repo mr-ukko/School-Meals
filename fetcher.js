@@ -66,10 +66,8 @@ function displayMenuForToday(data) {
 
                         // Menu item details: name, portion size, and diets
                         const itemDetails = document.createElement('p');
-                        itemDetails.innerHTML = `
-                            <strong>${item.name}</strong> 
-                            (Portion: ${item.portionSize}g, Diets: ${item.diets})
-                        `;
+                        //itemDetails.innerHTML = `<strong>${item.name}</strong>(Portion: ${item.portionSize}g, Diets: ${item.diets})`;
+                        itemDetails.innerHTML = `<strong>${item.name}</strong>(Diets: ${item.diets})`;
                         menuItemDiv.appendChild(itemDetails);
 
                         // Append the menu item to the meal option
